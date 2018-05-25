@@ -1,5 +1,5 @@
 * {
-	border: 1px solid lightblue;
+/*	border: 1px solid lightblue;*/
 	color: #666;
 }
 
@@ -14,19 +14,51 @@ ul {
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
 	grid-gap: 10px;
-	width: 690px;
+	width: 700px;
 	margin: 0 auto;
+	background: #f2f2f2;
+	-webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.4);
+	-moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.4);
+	box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.4);
 }
 
 li {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
 }
 
 .card {
 	width: 100px;
 	height: 100px;
-	font-size: 4em;
+	font-size: 0;
+	background: linear-gradient(90deg, #E0EFF7 0%, #E1F1F5 100%);
+	-webkit-box-shadow: 0px 0px 4px 2px rgba(40, 60, 75,0.4);
+	-moz-box-shadow: 0px 0px 4px 2px rgba(40, 60, 75,0.4);
+	box-shadow: 0px 0px 4px 2px rgba(40, 60, 75, 0.4);
+	cursor: pointer;
+}
+
+.card.flip {
+	-moz-transform: scale(1, -1);
+	-webkit-transform: scale(1, -1);
+	-o-transform: scale(1, -1);
+	-ms-transform: scale(1, -1);
+	transform: scale(1, -1);
+	background: #white;
+	cursor: default;
+}
+
+.card.flipped {
+	font-size: 3.2em;
+}
+
+.card.matched {
+	cursor: default;
+	background: green;
+	font-size: 3.2em;
+}
+
+.fa {
+	color: #777;
 }

@@ -25,8 +25,17 @@ $(function() {
 		for (let i = 0; i < cards.length; i++) {
 		        $('.deck').append($('<li class="card"><i class="fa fa-' + cards[i] + '"></i></li>'))
 		}
+		cardListener();
+	}
+
+	const cardListener = () => {
+
+		// flip the card that is clicked on
+		$('.deck')
 	}
 
 	init();
+
+
 
 })
