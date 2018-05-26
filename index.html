@@ -27,7 +27,7 @@
 				<p id="winText"></p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="again-btn" data-dismiss="modal">Play Again!</button>
+				<button type="button" id="again-button" onclick=playAgain()>Play Again!</button>
 			</div>
 		</div>
 	</div>
@@ -36,16 +36,87 @@
 	<div class="container">
         <h1>Coder Match</h1>
         <section class="score-bar">
-            <span class="moves">0</span> Moves | Time:
-            <span class="timer">0</span> s
-            <div class="restart">
-                <i class="fa fa-repeat"></i>
+            <span class="moves">0</span> Move(s)
+            <div class="timer">0</div>
+            <div class="restart" onclick=startGame()>
+                <i class="fa fa-repeat" aria-hidden="true"></i>
             </div>
         </section>
 	</div>
 
 	<ul class="deck">
-		
+		<li class="card" type="keyboard">
+			<i class="fa fa-keyboard"></i>
+		</li>
+		<li class="card" type="keyboard">
+			<i class="fa fa-keyboard"></i>
+		</li>
+		<li class="card" type="qrcode">
+			<i class="fa fa-qrcode"></i>
+		</li>
+		<li class="card" type="qrcode">
+			<i class="fa fa-qrcode"></i>
+		</li>
+		<li class="card" type="sitemap">
+			<i class="fa fa-sitemap"></i>
+		</li>
+		<li class="card" type="sitemap">
+			<i class="fa fa-sitemap"></i>
+		</li>
+		<li class="card" type="project-diagram">
+			<i class="fa fa-project-diagram"></i>
+		</li>
+		<li class="card" type="project-diagram">
+			<i class="fa fa-project-diagram"></i>
+		</li>
+		<li class="card" type="user-secret">
+			<i class="fa fa-user-secret"></i>
+		</li>
+		<li class="card" type="user-secret">
+			<i class="fa fa-user-secret"></i>
+		</li>
+		<li class="card" type="bug">
+			<i class="fa fa-bug"></i>
+		</li>
+		<li class="card" type="bug">
+			<i class="fa fa-bug"></i>
+		</li>
+		<li class="card" type="microchip">
+			<i class="fa fa-microchip"></i>
+		</li>
+		<li class="card" type="microchip">
+			<i class="fa fa-microchip"></i>
+		</li>
+		<li class="card" type="terminal">
+			<i class="fa fa-terminal"></i>
+		</li>
+		<li class="card" type="terminal">
+			<i class="fa fa-terminal"></i>
+		</li>
+		<li class="card" type="database">
+			<i class="fa fa-database"></i>
+		</li>
+		<li class="card" type="database">
+			<i class="fa fa-database"></i>
+		</li>
+		<li class="card" type="power-off">
+			<i class="fa fa-power-off"></i>
+		</li>
+		<li class="card" type="power-off">
+			<i class="fa fa-power-off"></i>
+		</li>
+		<li class="card" type="desktop">
+			<i class="fa fa-desktop"></i>
+		</li>
+		<li class="card" type="desktop">
+			<i class="fa fa-desktop"></i>
+		</li>
+		<li class="card" type="headphones">
+			<i class="fa fa-headphones"></i>
+		</li>
+		<li class="card" type="headphones">
+			<i class="fa fa-headphones"></i>
+		</li>
 	</ul>
 
 
