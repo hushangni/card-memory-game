@@ -2,6 +2,10 @@ $(function() {
 	const cardItems = ['keyboard', 'keyboard', 'qrcode', 'sitemap', 'project-diagram', 'user-secret', 'bug', 'microchip', 'terminal', 'database', 'power-off', 'desktop', 'headphones', 'qrcode', 'sitemap', 'project-diagram', 'user-secret', 'bug', 'microchip', 'terminal', 'database', 'power-off', 'desktop', 'headphones'];
 	console.log(cardItems.length);
 
+	let flippedArray = [];
+	const wait = 500;
+	let match = 0;
+
 	// Shuffle the card items array. Returns new array.
 	const shuffle = (cards) => {
 		let cardsArray = cards;
@@ -31,7 +35,28 @@ $(function() {
 	const cardListener = () => {
 
 		// flip the card that is clicked on
-		$('.deck')
+		$('.deck').find('.card').bind('click', function() {
+			if ($(this).hasClass('flipped') || $(this).hasClass('matched')) {
+				return true;
+			}
+
+			let card = $(this).context.innerHTML;
+			$(this).addClass('flip flipped');
+			flippedArray.push(card);
+
+			// if we have 2 cards that are flipped, check if the most recent one matches the first one. 
+			if (flippedArray.length > 1) {
+				if (card == flippedArray[0]) {
+					// if matched we turn the cards green. Remove styling from flipped cards that are not matched. 
+					$('.deck').find('.flipped').addClass('matched');
+					setTimeout(function () {
+						$('.deck').removeClass('flip flipped');
+					}, wait);
+					match++;
+				} 
+			}
+
+
 	}
 
 	init();
