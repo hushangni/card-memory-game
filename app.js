@@ -1,35 +1,20 @@
 $(function() {
-	// const cardItems = ['keyboard', 'keyboard', 'qrcode', 'sitemap', 'project-diagram', 'user-secret', 'bug', 'microchip', 'terminal', 'database', 'power-off', 'desktop', 'headphones', 'qrcode', 'sitemap', 'project-diagram', 'user-secret', 'bug', 'microchip', 'terminal', 'database', 'power-off', 'desktop', 'headphones'];
 
-	// let flippedArray = [];
-	// const wait = 500;
-	// let match = 0;
-
-	// get cards array to hold cards
+	// variables for commonly used elements
 	let cards = $('.card');
-	console.log(cards);
-
-	// get deck
 	const deck = $('.deck');
-
-	// set moves 
-	let moves = 0;
 	let counter = $('.moves');
-
 	let matchedCard = $('.match');
-
 	let closeBtn = $('.close');
-
 	let modal = $('.modal');
+	let time = $(".time");
 
+	// variables for time, moves, and opened card list
 	let openedCards = [];
+	let moves = 0;
 	let second = 0;
 	let minute = 0;
-	let hour = 0;
-	let timer = $(".time");
 	let interval;
-
-
 
 	// Shuffle the card items array. Returns new array.
 	const shuffle = (cards) => {
@@ -43,7 +28,7 @@ $(function() {
 		return cards;
 	}
 
-	// start game
+	// Start game ////////////////////
 	init();
 
 	function init() {
@@ -56,7 +41,7 @@ $(function() {
 			deck.append(cards[i]);
 			$(cards[i]).removeClass("flip flipped matched");
 		}
-		$(".time")[0].innerHTML = "0 mins 0 secs";
+		$(time)[0].innerHTML = "0 mins 0 secs";
 
 		// reset moves
 		moves = 0;
@@ -107,11 +92,33 @@ $(function() {
 	}
 
 	// count players moves
-
-
+	const incrMoves = () => {
+		moves++;
+		counter.innerHTML = moves;
+		// start timer on first click!
+		if (moves == 1) {
+			second = 0;
+			minute = 0;
+			hour = 0;
+			startTimer();
+		}
+	}	
 
 	// game timer
-
+	const startTimer = () => {
+		interval = setInterval( function() {
+			$(time)[0].innerHTML = minute + " mins " + second + " secs";
+			second++;
+			if (second == 60) {
+				minute++;
+				second = 0;
+			}
+			if (minute == 60) {
+				hour++;
+				minute = 0;
+			}
+		}, 700);
+	}
 
 	for (let i = 0; i < cards.length; i++) {
 		card = cards[i];
