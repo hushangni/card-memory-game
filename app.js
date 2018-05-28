@@ -148,14 +148,16 @@ $(function() {
 	const closeModal = () => {
 		closeBtn.on("click", function(e) {
 			$(modal).removeClass("show");
-			init();
 		});
 	}
 
 	const playAgain = () => {
 		$(modal).removeClass("show");
-		init();
 	}
+
+	// for redo or play again restart the game
+	$('.fa-redo').on('click', init);
+	$('#play-again').on('click', init);
 
 	for (let i = 0; i < cards.length; i++) {
 		card = cards[i];
