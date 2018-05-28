@@ -4,7 +4,7 @@ $(function() {
 	let cards = $('.card');
 	const deck = $('.deck');
 	let counter = $('.moves');
-	let matchedCard = $('.match');
+	let matchedCards = document.getElementsByClassName("match");
 	let closeBtn = $('.close');
 	let modal = $('.modal');
 	let time = $(".time");
@@ -39,7 +39,7 @@ $(function() {
 		deck.innerHTML = "";
 		for (let i = 0; i < cards.length; i++) {
 			deck.append(cards[i]);
-			$(cards[i]).removeClass("flip flipped matched");
+			$(cards[i]).removeClass("flip flipped match");
 		}
 		$(time)[0].innerHTML = "0 mins 0 secs";
 
@@ -56,8 +56,8 @@ $(function() {
 	const matched = () => {
 		$(openedCards[0]).addClass("match disabled");
 		$(openedCards[1]).addClass("match disabled");
-		$(openedCards[0]).removeClass("flip flipped no-event");
-		$(openedCards[1]).removeClass("flip flipped no-event");
+		$(openedCards[0]).removeClass("flip flipped no-event unmatched");
+		$(openedCards[1]).removeClass("flip flipped no-event unmatched");
 		openedCards = [];
 	}
 
@@ -67,8 +67,8 @@ $(function() {
 		$(openedCards[1]).addClass("unmatched");
 		disable();
 		setTimeout(function () {
-			$(openedCards[0]).removeClass("flip flipped no-event unmatched");
-			$(openedCards[1]).removeClass("flip flipped no-event unmatched");
+			$(openedCards[0]).removeClass("flip flipped unmatched");
+			$(openedCards[1]).removeClass("flip flipped unmatched");
 			enable();
 			openedCards = [];
 		}, 400);
@@ -76,19 +76,30 @@ $(function() {
 
 	// disables cards temporarily
 	const disable = () => {
-		cards.filter(function (card) {
-			$(cards[card]).addClass('disabled');
-		})
+		for (let i = 0; i < cards.length; i++) {
+			$(cards[i]).addClass('disabled');
+		}
+		// cards.filter.call(cards, function (card) {
+		// 	$(cards[card]).addClass('disabled');
+		// });
 	}
 
 	// enables cards and disable matched cards
 	const enable = () => {
-		cards.filter(function (card) {
-			$(cards[card]).removeClass('disabled');
-			for (let i = 0; i < matchedCard.length; i++) {
-				$(matchedCard[i]).addClass('disabled');
-			}
-		});
+		for (let i = 0; i < cards.length; i++) {
+			$(cards[i]).removeClass('disabled');
+
+		}
+
+		for (let i = 0; i < matchedCards.length; i++) {
+			$(matchedCards[i]).addClass("disabled");
+		}
+		// cards.filter.call(cards, function (card) {
+		// 	$(cards[card]).removeClass('disabled');
+		// 	for (let i = 0; i < matchedCards.length; i++) {
+		// 		$(matchedCards[i]).addClass('disabled');
+		// 	}
+		// });
 	}
 
 	// count players moves
@@ -99,7 +110,6 @@ $(function() {
 		if (moves == 1) {
 			second = 0;
 			minute = 0;
-			hour = 0;
 			startTimer();
 		}
 	}	
@@ -120,25 +130,56 @@ $(function() {
 		}, 700);
 	}
 
+	// winner modal
+	const winnerModal = () => {
+		if (matchedCards.length == 2) {
+			clearInterval(interval);
+			finalTime = $(time)[0].innerHTML;
+			$(modal).addClass("show");
+
+			// display moves, time spent
+			$('#totalMoves')[0].innerHTML = moves;
+			$('#totalTime')[0].innerHTML = finalTime;
+
+			closeModal();
+		}
+	}
+
+	const closeModal = () => {
+		closeBtn.on("click", function(e) {
+			$(modal).removeClass("show");
+			init();
+		});
+	}
+
+	const playAgain = () => {
+		$(modal).removeClass("show");
+		init();
+	}
+
 	for (let i = 0; i < cards.length; i++) {
 		card = cards[i];
 		$(card).on("click", function(){
 			$(this).toggleClass('flip');
-			$(this).toggleClass('diabled');
+			$(this).toggleClass('disabled');
 			$(this).toggleClass('flipped');
 		});
 		$(card).on("click", function() {
 			openedCards.push(this);
 			let len = openedCards.length;
+			// if (len === 1) {
+			// 	openCards[0].addClass('disabled')
+			// }
 			if (len === 2) {
 				incrMoves();
-				if( openedCards[0].type === openedCards[1].type) {
+				if(openedCards[0].type === openedCards[1].type) {
 					matched();
 				} else {
 					unmatched();
 				}
 			}
 		});
+		$(card).on("click", winnerModal);
 	}
 
 

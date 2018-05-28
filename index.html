@@ -19,15 +19,16 @@
 		<!-- modal content -->
 		<div class="win-modal-content">
 			<div class="modal-header">
-				<span class="close">&times;</span>
 				<h3>Winner winner!</h3>
+				<a href="#" class="close">×</a>
 			</div>
 			<div class="modal-body">
 				<!-- text change  -->
-				<p id="winText"></p>
+				<p>You made <span id="totalMoves"> </span>Moves</p>
+				<p>You took <span id="totalTime"> </span> to finish the game.</p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" id="again-button" onclick=playAgain()>Play Again!</button>
+				<button type="button" id="play-again" onclick=playAgain()>Play Again!</button>
 			</div>
 		</div>
 	</div>

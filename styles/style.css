@@ -13,13 +13,13 @@ ul {
 	padding: 20px;
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
-	grid-gap: 10px;
-	width: 700px;
+	grid-gap: 15px;
+	width: 720px;
 	margin: 0 auto;
 	background: #f2f2f2;
-	-webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.4);
-	-moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.4);
-	box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.4);
+	-webkit-box-shadow: 4px 4px 20px 3px rgba(0,0,0,0.4);
+	-moz-box-shadow: 4px 4px 20px 3px rgba(0,0,0,0.4);
+	box-shadow: 4px 4px 20px 3px rgba(0,0,0,0.4);
 }
 
 li {
@@ -35,9 +35,9 @@ li {
 	background: #444;
 	border: none;
 	/*background: linear-gradient(90deg, #E0EFF7 0%, #E1F1F5 100%);*/
-	-webkit-box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.4);
-	-moz-box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.4);
-	box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.4);
+	-webkit-box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.4);
+	box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.4);
 	cursor: pointer;
 }
 
@@ -81,6 +81,7 @@ li {
 
 .card.disabled {
 	pointer-events: none;
+	cursor: default;
 }
 
 .match .fa {
@@ -90,6 +91,8 @@ li {
 .fa {
 	color: #777;
 }
+
+/* #winmodal = popup1 .win-modal-content = popup */
 
 /* animations */
 @keyframes flip {
