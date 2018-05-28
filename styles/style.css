@@ -31,7 +31,7 @@ li {
 .card {
 	width: 100px;
 	height: 100px;
-	font-size: 2.5em;
+	font-size: 0;
 	background: #444;
 	border: none;
 	/*background: linear-gradient(90deg, #E0EFF7 0%, #E1F1F5 100%);*/
@@ -49,22 +49,46 @@ li {
 	transform: rotateY(180deg);*/
 	background: white;
 	cursor: default;
+	transform: rotateY(0);
+	animation-name: flip;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+
 }
 
 .card.flipped {
 	font-size: 2.5em;
 }
 
-.card.matched {
+.card.match {
 	cursor: default;
 	background: #81cc63;
 	font-size: 3.2em;
+	animation-name: bounce;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
 }
 
-.matched .fa {
+.card.unmatched {
+	animation-name: pulse;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .5s;
+
+}
+
+.card.disabled {
+	pointer-events: none;
+}
+
+.match .fa {
 	color: white;
 }
 
 .fa {
 	color: #777;
 }
+
+

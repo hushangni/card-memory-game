@@ -11,8 +11,25 @@ $(function() {
 
 	// get deck
 	const deck = $('.deck');
+
+	// set moves 
 	let moves = 0;
 	let counter = $('.moves');
+
+	let matchedCard = $('.match');
+
+	let closeBtn = $('.close');
+
+	let modal = $('.modal');
+
+	let openedCards = [];
+	let second = 0;
+	let minute = 0;
+	let hour = 0;
+	let timer = $(".time");
+	let interval;
+
+
 
 	// Shuffle the card items array. Returns new array.
 	const shuffle = (cards) => {
@@ -26,6 +43,7 @@ $(function() {
 		return cards;
 	}
 
+	// start game
 	init();
 
 	function init() {
@@ -36,53 +54,85 @@ $(function() {
 		deck.innerHTML = "";
 		for (let i = 0; i < cards.length; i++) {
 			deck.append(cards[i]);
+			$(cards[i]).removeClass("flip flipped matched");
 		}
+		$(".time")[0].innerHTML = "0 mins 0 secs";
+
+		// reset moves
+		moves = 0;
+		counter.innerHTML = moves;
+		second = 0;
+		minute = 0;
+	
+		clearInterval(interval);
 	}
 
+	// when cards are matched
+	const matched = () => {
+		$(openedCards[0]).addClass("match disabled");
+		$(openedCards[1]).addClass("match disabled");
+		$(openedCards[0]).removeClass("flip flipped no-event");
+		$(openedCards[1]).removeClass("flip flipped no-event");
+		openedCards = [];
+	}
 
-	//begin game
-	// const init = () => {
+	// when cards don't match
+	const unmatched = () => {
+		$(openedCards[0]).addClass("unmatched");
+		$(openedCards[1]).addClass("unmatched");
+		disable();
+		setTimeout(function () {
+			$(openedCards[0]).removeClass("flip flipped no-event unmatched");
+			$(openedCards[1]).removeClass("flip flipped no-event unmatched");
+			enable();
+			openedCards = [];
+		}, 400);
+	}
 
-	// 	let cards = shuffle(cardItems);
-	// 	$('.deck').empty();
+	// disables cards temporarily
+	const disable = () => {
+		cards.filter(function (card) {
+			$(cards[card]).addClass('disabled');
+		})
+	}
 
-	// 	// shuffle cards and generate all li elements for deck
-	// 	for (let i = 0; i < cards.length; i++) {
-	// 	        $('.deck').append($('<li class="card"><i class="fa fa-' + cards[i] + '"></i></li>'))
-	// 	}
-	// 	cardListener();
-	// }
+	// enables cards and disable matched cards
+	const enable = () => {
+		cards.filter(function (card) {
+			$(cards[card]).removeClass('disabled');
+			for (let i = 0; i < matchedCard.length; i++) {
+				$(matchedCard[i]).addClass('disabled');
+			}
+		});
+	}
 
-	// const cardListener = () => {
+	// count players moves
 
-	// 	// flip the card that is clicked on
-	// 	$('.deck').find('.card').bind('click', function() {
-	// 		if ($(this).hasClass('flipped') || $(this).hasClass('matched')) {
-	// 			return true;
-	// 		}
 
-	// 		let card = $(this).context.innerHTML;
-	// 		$(this).addClass('flip flipped');
-	// 		flippedArray.push(card);
 
-	// 		// if we have 2 cards that are flipped, check if the most recent one matches the first one. 
-	// 		if (flippedArray.length > 1) {
-	// 			if (card == flippedArray[0]) {
-	// 				// if matched we turn the cards green. Remove styling from flipped cards that are not matched. 
-	// 				$('.deck').find('.flipped').addClass('matched');
-	// 				setTimeout(function () {
-	// 					$('.deck').removeClass('flip flipped');
-	// 				}, wait);
-	// 				match++;
-	// 			} 
-	// 		}
+	// game timer
 
-	// 	});
 
-	// }
-
-	// init();
-
+	for (let i = 0; i < cards.length; i++) {
+		card = cards[i];
+		$(card).on("click", function(){
+			$(this).toggleClass('flip');
+			$(this).toggleClass('diabled');
+			$(this).toggleClass('flipped');
+		});
+		$(card).on("click", function() {
+			openedCards.push(this);
+			let len = openedCards.length;
+			if (len === 2) {
+				incrMoves();
+				if( openedCards[0].type === openedCards[1].type) {
+					matched();
+				} else {
+					unmatched();
+				}
+			}
+		});
+	}
 
 
 })
