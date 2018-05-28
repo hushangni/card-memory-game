@@ -1,15 +1,16 @@
-* {
-/*	border: 1px solid lightblue;*/
-	color: #666;
-}
 
 body {
 	background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
 	text-align: center;
+	font-family: 'Comfortaa', sans-serif;
+	color: #666;
 }
 
 ul {
 	list-style: none;
+}
+
+ul.deck {
 	padding: 20px;
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
@@ -22,7 +23,7 @@ ul {
 	box-shadow: 4px 4px 20px 3px rgba(0,0,0,0.4);
 }
 
-li {
+li.card {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -92,7 +93,7 @@ li {
 	color: #777;
 }
 
-/* #winmodal = popup1 .win-modal-content = popup */
+/* win modal  */
 #winModal {
 	position: fixed;
 	top: 0;
@@ -101,22 +102,16 @@ li {
 	right: 0;
 	background: rgba(0, 0, 0, 0.7);
 	transition: opacity 500ms;
-	visibility: hidden;
-	opacity: 0;
-}
-
-#winModal:target {
-	visibility: visible;
-	opacity: 1;
+	display: none;
 }
 
 .win-modal-content {
-	margin: 70px auto;
-	padding: 20px;
+	margin: 100px auto;
+	padding: 30px;
 	background: white;
-	width: 70%;
+	width: 65%;
 	position: relative;
-	transition: 2s ease-in-out;
+	transition: 3s ease-in-out;
 }
 
 .close {
@@ -133,10 +128,70 @@ li {
 	color: #999;
 }
 
-.show {
-	visibility: visible !important;
-	opacity: 100 !important;;
+#winModal.show {
+	display: block;
 }
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 30px;
+}
+
+h1 {
+	margin-bottom: 40px;
+	font-weight: 700;
+	font-size: 2.3em;
+	color: #444;
+}
+
+h1:hover {
+	text-shadow: 3px 3px #bbb;
+}
+
+.score-bar {
+	text-align: left;
+	margin-bottom: 25px;
+	display: flex;
+	flex-direction: row;
+}
+
+.thumbs {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	margin-right: 30px;
+}
+
+.fa-thumbs-up {
+	color: #438cf9;
+}
+
+.thumbs li {
+	display: inline-block;
+}
+
+#moves {
+	margin-right: 30px;
+}
+
+#time {
+	margin-right: 40px;
+}
+
+.restart {
+	float: right;
+	cursor: pointer;
+}
+
+.fa-redo:hover {
+	color: #999;
+}
+
+
+
 
 /* animations */
 @keyframes flip {

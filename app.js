@@ -3,11 +3,12 @@ $(function() {
 	// variables for commonly used elements
 	let cards = $('.card');
 	const deck = $('.deck');
-	let counter = $('.moves');
+	let counter = $('#moves');
 	let matchedCards = document.getElementsByClassName("match");
 	let closeBtn = $('.close');
 	let modal = $('#winModal');
-	let time = $(".time");
+	let time = $('#time');
+	let thumbs = $('.fa-thumbs-up');
 
 	// variables for time, moves, and opened card list
 	let openedCards = [];
@@ -41,14 +42,19 @@ $(function() {
 			deck.append(cards[i]);
 			$(cards[i]).removeClass("flip flipped match");
 		}
-		$(time)[0].innerHTML = "0 mins 0 secs";
 
 		// reset moves
 		moves = 0;
-		counter.innerHTML = moves;
+		$(counter)[0].innerHTML = moves + " moves";
+
+		for (let i = 0; i < thumbs.length; i++) {
+			$(thumbs[i]).css("color", "#438cf9");
+			$(thumbs[i]).css("visibility", "visible");
+		}
+
 		second = 0;
 		minute = 0;
-	
+		$(time)[0].innerHTML = "0 mins 0 secs";
 		clearInterval(interval);
 	}
 
@@ -105,20 +111,46 @@ $(function() {
 	// count players moves
 	const incrMoves = () => {
 		moves++;
-		counter.innerHTML = moves;
+		$(counter)[0].innerHTML = moves + " moves";
 		// start timer on first click!
 		if (moves == 1) {
 			second = 0;
 			minute = 0;
 			startTimer();
 		}
+
+		if (moves < 25 && moves > 15) {
+			for (let i = 0; i < 5; i++) {
+				if (i > 3) {
+					$(thumbs[i]).css("visibility", "collapse");
+				}
+			}
+		} else if (moves < 35 && moves > 26) {
+			for (let i = 0; i < 5; i++) {
+				if (i > 2) {
+					$(thumbs[i]).css("visibility", "collapse");
+				}
+			}
+		} else if (moves < 50 && moves > 36) {
+			for (let i = 0; i < 5; i++) {
+				if (i > 1) {
+					$(thumbs[i]).css("visibility", "collapse");
+				}
+			}
+		} else if (moves > 51) {
+			for (let i = 0; i < 5; i++) {
+				if (i > 0) {
+					$(thumbs[i]).css("visibility", "collapse");
+				}
+			}
+		}
 	}	
 
 	// game timer
 	const startTimer = () => {
 		interval = setInterval( function() {
-			$(time)[0].innerHTML = minute + " mins " + second + " secs";
 			second++;
+			$(time)[0].innerHTML = minute + " mins " + second + " secs";
 			if (second == 60) {
 				minute++;
 				second = 0;
@@ -132,7 +164,7 @@ $(function() {
 
 	// winner modal
 	const winnerModal = () => {
-		if (matchedCards.length == 2) {
+		if (matchedCards.length === 24) {
 			clearInterval(interval);
 			finalTime = $(time)[0].innerHTML;
 			$(modal).addClass("show");
@@ -153,11 +185,12 @@ $(function() {
 
 	const playAgain = () => {
 		$(modal).removeClass("show");
+		init();
 	}
 
 	// for redo or play again restart the game
 	$('.fa-redo').on('click', init);
-	$('#play-again').on('click', init);
+	$('#play-again').on('click', playAgain);
 
 	for (let i = 0; i < cards.length; i++) {
 		card = cards[i];

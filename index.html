@@ -6,6 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
 	<!-- load favicon -->
+	<!-- load google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
 	<!-- load font awesome -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	<!-- link to style sheets -->
@@ -32,8 +34,15 @@
 	<div class="container">
         <h1>Coder Match</h1>
         <section class="score-bar">
-            <!-- <span class="moves">0</span> Move(s) -->
-            <div class="time">0</div>
+        	<ul class="thumbs">
+        		<li><i class="fa fa-thumbs-up"></i></li>
+        		<li><i class="fa fa-thumbs-up"></i></li>
+        		<li><i class="fa fa-thumbs-up"></i></li>
+        		<li><i class="fa fa-thumbs-up"></i></li>
+        		<li><i class="fa fa-thumbs-up"></i></li>
+        	</ul>
+        	<div id="moves"></div>
+            <div id="time"></div>
             <div class="restart">
                 <i class="fa fa-redo" aria-hidden="true"></i>
             </div>
