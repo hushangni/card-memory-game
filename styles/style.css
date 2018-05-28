@@ -93,6 +93,50 @@ li {
 }
 
 /* #winmodal = popup1 .win-modal-content = popup */
+#winModal {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.7);
+	transition: opacity 500ms;
+	visibility: hidden;
+	opacity: 0;
+}
+
+#winModal:target {
+	visibility: visible;
+	opacity: 1;
+}
+
+.win-modal-content {
+	margin: 70px auto;
+	padding: 20px;
+	background: white;
+	width: 70%;
+	position: relative;
+	transition: 2s ease-in-out;
+}
+
+.close {
+	position: absolute;
+	top: 10px;
+	right: 30px;
+	transition: all 200ms;
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.win-modal-content .close:hover {
+	color: #999;
+}
+
+.show {
+	visibility: visible !important;
+	opacity: 100 !important;;
+}
 
 /* animations */
 @keyframes flip {

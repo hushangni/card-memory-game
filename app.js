@@ -6,7 +6,7 @@ $(function() {
 	let counter = $('.moves');
 	let matchedCards = document.getElementsByClassName("match");
 	let closeBtn = $('.close');
-	let modal = $('.modal');
+	let modal = $('#winModal');
 	let time = $(".time");
 
 	// variables for time, moves, and opened card list
