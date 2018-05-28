@@ -12,6 +12,7 @@ $(function() {
 
 	// variables for time, moves, and opened card list
 	let openedCards = [];
+	let thumbsUp = 5;
 	let moves = 0;
 	let second = 0;
 	let minute = 0;
@@ -40,13 +41,14 @@ $(function() {
 		deck.innerHTML = "";
 		for (let i = 0; i < cards.length; i++) {
 			deck.append(cards[i]);
-			$(cards[i]).removeClass("flip flipped match");
+			$(cards[i]).removeClass("flip flipped match disable");
 		}
 
 		// reset moves
 		moves = 0;
 		$(counter)[0].innerHTML = moves + " moves";
 
+		thumbsUp = 5;
 		for (let i = 0; i < thumbs.length; i++) {
 			$(thumbs[i]).css("color", "#438cf9");
 			$(thumbs[i]).css("visibility", "visible");
@@ -119,25 +121,25 @@ $(function() {
 			startTimer();
 		}
 
-		if (moves < 25 && moves > 15) {
+		if (moves < 30 && moves > 20) {
 			for (let i = 0; i < 5; i++) {
 				if (i > 3) {
 					$(thumbs[i]).css("visibility", "collapse");
 				}
 			}
-		} else if (moves < 35 && moves > 26) {
+		} else if (moves < 40 && moves > 31) {
 			for (let i = 0; i < 5; i++) {
 				if (i > 2) {
 					$(thumbs[i]).css("visibility", "collapse");
 				}
 			}
-		} else if (moves < 50 && moves > 36) {
+		} else if (moves < 55 && moves > 41) {
 			for (let i = 0; i < 5; i++) {
 				if (i > 1) {
 					$(thumbs[i]).css("visibility", "collapse");
 				}
 			}
-		} else if (moves > 51) {
+		} else if (moves > 56) {
 			for (let i = 0; i < 5; i++) {
 				if (i > 0) {
 					$(thumbs[i]).css("visibility", "collapse");
