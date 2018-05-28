@@ -53,7 +53,6 @@ $(function() {
 			$(thumbs[i]).css("color", "#438cf9");
 			$(thumbs[i]).css("visibility", "visible");
 		}
-
 		second = 0;
 		minute = 0;
 		$(time)[0].innerHTML = "0 mins 0 secs";
@@ -166,13 +165,15 @@ $(function() {
 
 	// winner modal
 	const winnerModal = () => {
-		if (matchedCards.length === 24) {
+		if (matchedCards.length === 2) {
 			clearInterval(interval);
 			finalTime = $(time)[0].innerHTML;
 			$(modal).addClass("show");
+			let thumbsUp = document.querySelector(".thumbs").innerHTML;
 
 			// display moves, time spent
 			$('#totalMoves')[0].innerHTML = moves;
+			$('#totalThumbs')[0].innerHTML = thumbsUp;
 			$('#totalTime')[0].innerHTML = finalTime;
 
 			closeModal();

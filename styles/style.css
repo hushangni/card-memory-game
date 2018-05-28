@@ -102,7 +102,13 @@ li.card {
 	right: 0;
 	background: rgba(0, 0, 0, 0.7);
 	transition: opacity 500ms;
-	display: none;
+	visibility: hidden;
+	opacity: 0;
+}
+
+#winModal:target {
+	visibility: visible;
+	opacity: 1;
 }
 
 .win-modal-content {
@@ -114,6 +120,11 @@ li.card {
 	transition: 3s ease-in-out;
 }
 
+
+#winModal p {
+	font-size: 0.9em;
+}
+
 .close {
 	position: absolute;
 	top: 10px;
@@ -122,6 +133,7 @@ li.card {
 	font-size: 30px;
 	font-weight: bold;
 	text-decoration: none;
+	color: #666;
 }
 
 .win-modal-content .close:hover {
@@ -129,7 +141,8 @@ li.card {
 }
 
 #winModal.show {
-	display: block;
+	visibility: visible !important;
+	opacity: 100 !important;
 }
 
 .container {
@@ -173,12 +186,33 @@ h1:hover {
 	display: inline-block;
 }
 
+#totalThumbs li {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	margin-left: 10px;
+}
+
 #moves {
 	margin-right: 30px;
 }
 
 #time {
 	margin-right: 40px;
+}
+
+#play-again {
+	background: #999;
+	color: white;
+	border: none;
+	padding: 10px 12px;
+	font-weight: 700;
+	font-size: 1em;
+	transition: 0.3s;
+}
+
+#play-again:hover {
+	transform: scale(1.05, 1.05);
 }
 
 .restart {
@@ -190,10 +224,18 @@ h1:hover {
 	color: #999;
 }
 
-
+.blink {
+	animation: blink 0.9s linear;
+	animation-iteration-count: 3;
+}
 
 
 /* animations */
+@keyframes blink {
+	50% {
+		opacity: 0;
+	}
+}
 @keyframes flip {
 	from {
 		transform: perspective(200px) rotate3d(0, 1, 0, 90deg);
