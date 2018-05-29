@@ -201,7 +201,7 @@ h1:hover {
 	margin-right: 40px;
 }
 
-#play-again {
+#playAgain {
 	background: #999;
 	color: white;
 	border: none;
@@ -211,7 +211,7 @@ h1:hover {
 	transition: 0.3s;
 }
 
-#play-again:hover {
+#playAgain:hover {
 	transform: scale(1.05, 1.05);
 }
 

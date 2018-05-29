@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
 	<!-- load favicon -->
+	<link rel="shortcut icon" type="image/png" href="favicon.png">
 	<!-- load google fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
 	<!-- load font awesome -->
@@ -26,14 +27,14 @@
 			<p>You made <span id="totalMoves"> </span> moves.</p>
 			<p>You took <span id="totalTime"> </span> to finish the game.</p>
 			<p>You kept <span id="totalThumbs"> </span>thumbs up!</p>
-			<button type="button" id="play-again">Play Again! 🤘 </button>
-
-		</div>
-	</div>
+			<!-- play again button -->
+			<button type="button" id="playAgain">Play Again! 🤘 </button>
+		</div><!-- modal content end -->
+	</div><!-- winner modal end -->
 	
-	<!-- main -->
 	<div class="container">
         <h1>Coder Match ><span class="blink">_</span></h1>
+        <!-- score bar -->
         <section class="score-bar">
         	<ul class="thumbs">
         		<li><i class="fa fa-thumbs-up"></i></li>
@@ -47,9 +48,10 @@
             <div class="restart">
                 <i class="fa fa-redo" aria-hidden="true"></i>
             </div>
-        </section>
+        </section><!-- score bar end -->
 	</div>
-
+	
+	<!-- deck -->
 	<ul class="deck">
 		<li class="card" type="keyboard">
 			<i class="fa fa-keyboard"></i>
@@ -124,8 +126,8 @@
 			<i class="fa fa-headphones"></i>
 		</li>
 	</ul>
-
-
+	
+	<!-- load jquery / link javascript -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="app.js"></script>
 </body>
