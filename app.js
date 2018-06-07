@@ -132,6 +132,9 @@ $(function() {
 				if (i > 3) {
 					// 4 thumbs
 					$(thumbs[i]).css("visibility", "collapse");
+					if (thumbsUp > 4) {
+						thumbsUp--;
+					}
 				}
 			}
 		} else if (moves < 40 && moves > 31) {
@@ -139,6 +142,9 @@ $(function() {
 				if (i > 2) {
 					// 3 thumbs
 					$(thumbs[i]).css("visibility", "collapse");
+					if (thumbsUp > 3) {
+						thumbsUp--;
+					}
 				}
 			}
 		} else if (moves < 55 && moves > 41) {
@@ -146,6 +152,9 @@ $(function() {
 				if (i > 1) {
 					// 2 thumbs
 					$(thumbs[i]).css("visibility", "collapse");
+					if (thumbsUp > 2) {
+						thumbsUp--;
+					}
 				}
 			}
 		} else if (moves > 56) {
@@ -153,6 +162,9 @@ $(function() {
 				if (i > 0) {
 					// 1 thumb
 					$(thumbs[i]).css("visibility", "collapse");
+					if (thumbsUp > 1) {
+						thumbsUp--;
+					}
 				}
 			}
 		}
@@ -187,12 +199,13 @@ $(function() {
 			// after last flip match animation is finished
 			setTimeout(function() {
 				$(modal).addClass("show");
-			}, 800)
+			}, 800);
+			console.log(thumbsUp);
 
-			let thumbsUp = document.querySelector(".thumbs").innerHTML;
+			let showThumbsUp = document.querySelector(".thumbs").innerHTML;
 			// display moves, thumbs left, and time spent
 			$('#totalMoves')[0].innerHTML = moves;
-			$('#totalThumbs')[0].innerHTML = thumbsUp;
+			$('#totalThumbs')[0].innerHTML = showThumbsUp;
 			$('#totalTime')[0].innerHTML = finalTime;
 
 			// let the x button on modal listen for close click
