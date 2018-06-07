@@ -6,6 +6,18 @@ body {
 	color: #666;
 }
 
+h3 {
+	font-family: 'Lobster', cursive;
+	font-size: 1.4em;
+	letter-spacing: 2px;
+}
+
+.win-modal-content span {
+	font-weight: 900;
+	font-size: 1.1em;
+	color: black;
+}
+
 ul {
 	list-style: none;
 }
@@ -220,7 +232,7 @@ h1:hover {
 
 .blink {
 	animation: blink 0.9s linear;
-	animation-iteration-count: 3;
+	animation-iteration-count: 5;
 }
 
 

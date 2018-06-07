@@ -178,7 +178,7 @@ $(function() {
 	// make the winner modal pop up when game is completed
 	const checkWinnerModal = () => {
 		// occurs when all 24 cards are matched
-		if (matchedCards.length === 2) {
+		if (matchedCards.length === 24) {
 			// reset interval
 			clearInterval(interval);
 			finalTime = $(time)[0].innerHTML;
