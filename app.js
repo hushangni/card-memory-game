@@ -174,19 +174,22 @@ $(function() {
 		}, 700);
 	}
 
-
 	// checkWinnerModal();
 	// make the winner modal pop up when game is completed
 	const checkWinnerModal = () => {
 		// occurs when all 24 cards are matched
-		if (matchedCards.length === 24) {
+		if (matchedCards.length === 2) {
 			// reset interval
 			clearInterval(interval);
 			finalTime = $(time)[0].innerHTML;
-			// show the win modal
-			$(modal).addClass("show");
-			let thumbsUp = document.querySelector(".thumbs").innerHTML;
 
+			// show the win modal
+			// after last flip match animation is finished
+			setTimeout(function() {
+				$(modal).addClass("show");
+			}, 800)
+
+			let thumbsUp = document.querySelector(".thumbs").innerHTML;
 			// display moves, thumbs left, and time spent
 			$('#totalMoves')[0].innerHTML = moves;
 			$('#totalThumbs')[0].innerHTML = thumbsUp;
