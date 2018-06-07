@@ -200,7 +200,26 @@ $(function() {
 			setTimeout(function() {
 				$(modal).addClass("show");
 			}, 800);
-			console.log(thumbsUp);
+
+			switch (thumbsUp) {
+				case 5:
+					$('#congratulations')[0].innerHTML = `o((*^▽^*))o  You are insanely good at this!`;
+					break;
+				case 4:
+					$('#congratulations')[0].innerHTML = `You are above average, (b^_^)b, that's always good.`;
+					break;
+				case 3:
+					$('#congratulations')[0].innerHTML = `Eh, ¯\\_(ツ)_/¯  not too fast, not too slow.`;
+					break;
+				case 2:
+					$('#congratulations')[0].innerHTML = `You can do better! ಠ_ಠ I believe in you!`;
+					break;
+				case 1:
+					$('#congratulations')[0].innerHTML = `Wha,  (ノಠ益ಠ)ノ彡 ┻━┻   what took you so long???`;
+					break;
+				default:
+					$('#congratulations')[0].innerHTML = `Congratulations smart cookie! 🍪`;
+			}
 
 			let showThumbsUp = document.querySelector(".thumbs").innerHTML;
 			// display moves, thumbs left, and time spent
