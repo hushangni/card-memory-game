@@ -127,7 +127,7 @@ $(function() {
 		}
 
 		// tiers for how many thumbs a player retains based on moves
-		if (moves < 30 && moves > 20) {
+		if (moves < 30 && moves > 25) {
 			for (let i = 0; i < 5; i++) {
 				if (i > 3) {
 					// 4 thumbs
@@ -168,7 +168,7 @@ $(function() {
 				}
 			}
 		}
-	}	
+	}
 
 	// startTimer();
 	// starts timing for the game
@@ -234,7 +234,7 @@ $(function() {
 	}
 
 	// closeModal();
-	// hids the win modal 
+	// hids the win modal
 	const closeModal = () => {
 		closeBtn.on('click', function(e) {
 			$(modal).removeClass('show');
@@ -277,7 +277,7 @@ $(function() {
 				}
 			}
 		});
-		// check winner 
+		// check winner
 		$(card).on("click", checkWinnerModal);
 	}
 });
