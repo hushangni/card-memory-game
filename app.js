@@ -63,7 +63,7 @@ $(function() {
 		clearInterval(interval);
 	}
 
-	// Start game call ////
+	// Start game call ////////////////
 	init();
 
 	// matched();
@@ -201,6 +201,7 @@ $(function() {
 				$(modal).addClass("show");
 			}, 800);
 
+			// display appropriate congratulations message depending on how many thumbs are kept up at the end of game
 			switch (thumbsUp) {
 				case 5:
 					$('#congratulations')[0].innerHTML = `o((*^▽^*))o  You are insanely good at this!`;
@@ -227,14 +228,15 @@ $(function() {
 			$('#totalThumbs')[0].innerHTML = showThumbsUp;
 			$('#totalTime')[0].innerHTML = finalTime;
 
-			// let the x button on modal listen for close click
+			// listen for the x to be clicked
 			closeModal();
+			// listen for the play again button click
 			playAgain();
 		}
 	}
 
 	// closeModal();
-	// hids the win modal
+	// hides the win modal
 	const closeModal = () => {
 		closeBtn.on('click', function(e) {
 			$(modal).removeClass('show');
@@ -242,15 +244,14 @@ $(function() {
 	}
 
 	// playAgain();
-	// when play again button is clicked, start the game again
-	// also close modal
+	// when play again button is clicked, start the game again and close modal
 	const playAgain = () => {
 		playAgainBtn.on('click', function(e) {
 			$(modal).removeClass('show');
 			init();
 		});
 	}
-
+	
 	// always be listening for restart button being clicked
 	$('.fa-redo').on('click', init);
 
